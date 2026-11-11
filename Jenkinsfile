@@ -30,7 +30,7 @@ pipeline{
                             ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://sonarqube-dind:9000 \
+                            -Dsonar.host.url=http://sonarqube-ruchi:9000 \
                             -Dsonar.token=${SONAR_TOKEN}
                         '''
                     }
