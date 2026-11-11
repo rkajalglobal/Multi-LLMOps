@@ -2,13 +2,13 @@
 pipeline{
    agent any
 
-//    environment {
-//         SONAR_PROJECT_KEY = 'LLMOPS'
-//         SONAR_SCANNER_HOME = tool 'Sonarqube'
+   environment {
+        SONAR_PROJECT_KEY = 'LLMopsRuchi'
+        SONAR_SCANNER_HOME = tool 'SonarQube Scanner'
 //         AWS_REGION = 'us-east-1'
 //         ECR_REPO = 'my-repo'
 //         IMAGE_TAG = 'latest'
-// }
+ }
 
   stages{
        stage('Cloning Github repo to Jenkins'){
@@ -22,22 +22,22 @@ pipeline{
        }
   }
 
-//    stage('SonarQube Analysis'){
-//                          steps {
-//                              withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKE')])
+   stage('SonarQube Analysis'){
+                         steps {
+                             withCredentials([string(credentialsId: 'SonarQube-Token', variable: 'SONAR_TOKEN')]){
 
-//                                withSonarQubeEnv('Sonarqube') {
-//                                                      sh """
-//                                              ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-//                                              -Dsonar.projectKey=${SONAR_PROJECT_KEY} |
-//                                              -Dsonar.sources =. |
-//                                              -Dsonar.host.url=http://sonarqube-dind:9000
-//                                              -Dsonar.login=${SONAR_TOKEN}
-//                                                        """
-//                                                        }
-//                                                  }
-//                                            }
-//                                       }
+                               withSonarQubeEnv('SonarQube Env') {
+                                                     sh """
+                                             ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
+                                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} |
+                                             -Dsonar.sources =. |
+                                             -Dsonar.host.url=http://sonarqube-dind:9000
+                                             -Dsonar.login=${SONAR_TOKEN}
+                                                       """
+                                                       }
+                                                 }
+                                           }
+                                      }
 
 //     stage('Build and Push Docker Image to ECR') {
 //                                              steps {
