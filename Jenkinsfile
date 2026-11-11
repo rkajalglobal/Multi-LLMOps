@@ -20,7 +20,7 @@ pipeline{
                  }
             }
        }
-  }
+  
 
    stage('SonarQube Analysis'){
                          steps {
@@ -72,7 +72,7 @@ pipeline{
 //                                                 }
 //                                              }
 //                                         }
-                                
-                      
-            
+
+            }                                
+                          
   }
