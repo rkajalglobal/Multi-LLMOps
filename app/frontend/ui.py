@@ -8,7 +8,7 @@ from app.common.custom_exception import CustomException
 logger = get_logger(__name__)
 
 st.set_page_config(page_title="Multi AI Agent" , layout="centered")
-st.title("BEPEC Multi AI Agent LLMOps")
+st.title("Ruchi Multi AI Agent LLMOps")
 
 system_prompt = st.text_area("Define your AI Agent: " , height=70)
 selected_model = st.selectbox("Select your AI model: ", settings.ALLOWED_MODEL_NAMES)
