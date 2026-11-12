@@ -8,7 +8,7 @@ pipeline{
         AWS_REGION = 'us-east-1'
         ECR_REPO = 'llmops'
         IMAGE_TAG = 'latest'
- }
+        }
 
   stages{
        stage('Cloning Github repo to Jenkins'){
@@ -40,7 +40,7 @@ pipeline{
 
     stage('Build and Push Docker Image to ECR') {
                                              steps {
-                                                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId:'aws-credentials']])
+                                                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId:'aws-credentials']]){
                                                    script {
                                                          def accountId = sh(script: "aws sts get-caller-identity --query Account --output text", returnStdout: true).trim()
                                                          def ecrUrl = "${accountId}.dkr.ecr.${env.AWS_REGION}.amazonaws.com/${env.ECR_REPO}"
@@ -51,7 +51,7 @@ pipeline{
                                                              docker push ${ecrUrl}:${env.IMAGE_TAG}
                                                                           """
                                                                 }
-
+                                                         }
                                                   }
                                            }
 
