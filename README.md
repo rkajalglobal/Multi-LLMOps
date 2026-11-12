@@ -1,0 +1,3 @@
+In this project, we have docker inside a docker(DinD). We have docker Jenkins container which is running and within that there is another docker which has all the environment set up of our project.
+
+We integrated Jenkins with Git Hub and then integrate it with SonarQube which is a testing platform, once software gets tested and then we create that docker image on AWS ECR and finally after that docker image in ECR is required to run on a container service which ECS(Elastic Container Service) or we can run it on EKS(Elastic Kubernettes Services) where actual deployment is done.

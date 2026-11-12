@@ -55,21 +55,21 @@ pipeline{
                                                   }
                                            }
 
-//        stage('Deploy to ECS Fargate') {
-//                                        steps {
-//                                            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-to']])
-//                                              script {
-//                                                   sh """
-//                                                 aws ecs update-service \
-//                                                 -- cluster multi-ai-agent-cluster \
-//                                                 -- service multi-ai-agent-def-service-shqlo39p
-//                                                 -- force-new-deployment \
-//                                                 -- region ${AWS_REGION}
-//                                                      """
-//                                                      }
-//                                                 }
-//                                              }
-//                                         }
+       stage('Deploy to ECS Fargate') {
+                                       steps {
+                                           withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]){
+                                             script {
+                                                  sh """
+                                                aws ecs update-service \
+                                                -- cluster llmops-cluster \
+                                                -- service llmops-task-def-service-rmmj1wuj \
+                                                -- force-new-deployment \
+                                                -- region ${AWS_REGION}
+                                                     """
+                                                     }
+                                                }
+                                             }
+                                        }
 
             }                                
                           
