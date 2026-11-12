@@ -61,10 +61,10 @@ pipeline{
                                              script {
                                                   sh """
                                                 aws ecs update-service \
-                                                -- cluster llmops-cluster \
-                                                -- service llmops-task-def-service-rmmj1wuj \
-                                                -- force-new-deployment \
-                                                -- region ${AWS_REGION}
+                                                --cluster llmops-cluster \
+                                                --service llmops-task-def-service-rmmj1wuj \
+                                                --force-new-deployment \
+                                                --region ${AWS_REGION}
                                                      """
                                                      }
                                                 }
